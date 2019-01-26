@@ -9,10 +9,40 @@ const ProductContext = React.createContext();
 
 //CONTEXT API
 class ProductProvider extends Component {
-  state = {
+
+
+  //FOR TESTING AND RENDERING
+  /*state = {
     products: storeProducts,
     detailProduct
+  }*/
+
+
+//FOR FUNCTIONAL RENDERING
+  state = {
+    products:[],
+    detailProduct
+  };
+  componentDidMount(){
+    this.setProducts();
   }
+  setProducts =()=>{
+    let tempProducts = [];
+    storeProducts.forEach(item => {
+      const singleItem = {...item};
+      tempProducts = [...tempProducts, singleItem];
+    });
+    this.setState(()=>{
+      return {products: tempProducts}
+    })
+  }
+
+
+
+
+
+
+
   handelDetail=()=>{
     console.log('hello from detail');
   }
